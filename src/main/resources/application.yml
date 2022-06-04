@@ -1,6 +1,22 @@
 spring:
   data:
-    mongodb:
-      uri:
-        mongodb://localhost:27017/usuarios
+    mongodb.uri: mongodb://localhost:27017/usuarios
 
+management:
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: false
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application=${spring:application:name}:
